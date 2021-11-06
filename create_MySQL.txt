@@ -1,0 +1,79 @@
+#
+# Structure for the `alunos` table : 
+#
+
+CREATE TABLE `alunos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `professor_id` int(11) DEFAULT NULL,
+  `sala_id` int(11) DEFAULT NULL,
+  `nome` varchar(50) CHARACTER SET latin1 DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+#
+# Structure for the `emocoes` table : 
+#
+
+CREATE TABLE `emocoes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `aluno_id` int(11) DEFAULT NULL,
+  `antecipacao` int(1) DEFAULT '0',
+  `aversao` int(1) DEFAULT '0',
+  `confianca` int(1) DEFAULT '0',
+  `feliz` int(1) DEFAULT '0',
+  `medo` int(1) DEFAULT '0',
+  `raiva` int(1) DEFAULT '0',
+  `surpresa` int(1) DEFAULT '0',
+  `triste` int(1) DEFAULT '0',
+  `data` date DEFAULT NULL,
+  `hora` time DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+#
+# Structure for the `logs` table : 
+#
+
+CREATE TABLE `logs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `origem` varchar(20) DEFAULT NULL,
+  `usuario_id` int(11) DEFAULT NULL,
+  `usuario` varchar(35) DEFAULT '0',
+  `senha` varchar(35) DEFAULT NULL,
+  `ip` varchar(35) DEFAULT NULL,
+  `data` date DEFAULT NULL,
+  `hora` time DEFAULT NULL,
+  `result` varchar(35) DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=MyISAM AUTO_INCREMENT=177 DEFAULT CHARSET=utf8;
+
+#
+# Structure for the `professores` table : 
+#
+
+CREATE TABLE `professores` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(60) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `senha` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `login_error` int(1) DEFAULT '0',
+  `secret` varchar(256) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `token` varchar(6) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `tokentime` tinytext COLLATE utf8_unicode_ci,
+  `data` date DEFAULT NULL,
+  `hora` time DEFAULT NULL,
+  `ativo` int(1) DEFAULT '0',
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE KEY `email` (`email`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=DYNAMIC;
+
+#
+# Structure for the `salas` table : 
+#
+
+CREATE TABLE `salas` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `professor_id` int(11) DEFAULT NULL,
+  `nome_sala` tinytext CHARACTER SET latin1,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
