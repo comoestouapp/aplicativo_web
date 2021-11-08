@@ -80,9 +80,9 @@ $mysqli -> query("INSERT INTO professores (nome, email, senha)
 VALUES ('$cadnome', '$cademail', PASSWORD('$cadpassword'))");
 
 
-//SOLICITA O ID CADASTRADO
+//SOLICITA OS DADOS DE CADASTRADO
 $queryLogin = "SELECT
-id
+id, nome
 FROM
 professores
 where email='$cademail'";
@@ -92,6 +92,7 @@ if ($resultLogin = $mysqli->query($queryLogin)) {
 
 	while ($rowLogin = $resultLogin->fetch_assoc()) {
     $wid  	=	$rowLogin["id"];
+    $wNome 	=	$rowLogin["nome"];
 		
 }}
 //-----------------------------------------------------------
@@ -102,6 +103,8 @@ if ($resultLogin = $mysqli->query($queryLogin)) {
 session_start();
 
 $_SESSION["wid"] = $wid;
+
+$_SESSION["wNome"] = $wNome;
 
 $mysecretsession = null;
 

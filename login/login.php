@@ -84,7 +84,7 @@ $wlogin_error++;
 
 // CHECANDO CREDENCIAIS
 $query = "SELECT
-id
+id, nome
 FROM
 professores
 where email='$email' and senha=PASSWORD('$senha')";
@@ -94,6 +94,7 @@ if ($result = $mysqli->query($query)) {
 
 	while ($row = $result->fetch_assoc()) {
     $wid	=	$row["id"];
+    $wNome 	=	$rowLogin["nome"];
 		
 if($wid) { $contador++; }
 
@@ -107,6 +108,8 @@ if($contador == 1) {
 session_start();
 
 $_SESSION["wid"] = $wid;
+
+$_SESSION["wNome"] = $wNome;
 
 $mysecretsession = null;
 
