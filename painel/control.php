@@ -23,25 +23,25 @@ if(!$wid) { echo "session"; exit(); }
 //***************************************************************
     //METODOS DE ACAO: 1 - INSERT, 2 - UPDATE, 3 - DELETE
     //-------------------------------------------------
-    $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_NUMBER_INT);
+    $action = filter_input(INPUT_POST, 'action', FILTER_SANITIZE_NUMBER_INT);
     $action = substr($action, 0, 1);
     //-------------------------------------------------
 
     //ALVO: 1 - SALAS, 2 - ALUNOS, 3 - EMOTIONS
     //-------------------------------------------------
-    $target = filter_input(INPUT_GET, 'target', FILTER_SANITIZE_NUMBER_INT);
+    $target = filter_input(INPUT_POST, 'target', FILTER_SANITIZE_NUMBER_INT);
     $target = substr($target, 0, 1);
     //-------------------------------------------------
 
     //KEY_ID
     //-------------------------------------------------
-    $key_id = filter_input(INPUT_GET, 'key_id', FILTER_SANITIZE_NUMBER_INT);
+    $key_id = filter_input(INPUT_POST, 'key_id', FILTER_SANITIZE_NUMBER_INT);
     $key_id = substr($key_id, 0, 11);
     //-------------------------------------------------
 
     //VALOR
     //-------------------------------------------------
-    $value = filter_input(INPUT_GET, 'value', FILTER_SANITIZE_MAGIC_QUOTES);
+    $value = filter_input(INPUT_POST, 'value', FILTER_SANITIZE_MAGIC_QUOTES);
     $value = substr($value, 0, 50);
     $value = preg_replace("/[^a-zA-Z0-9\s]/", "", $value);
     //-------------------------------------------------
