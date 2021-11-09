@@ -18,9 +18,9 @@ if(!$wid) { header('Location: https://comoestou.app.br/'); exit(); }
 require ( '../common/connect.php' );
 //***************************************
 
-//VERIFICA O SECRET
+//VERIFICA O SECRET e NOME
 $querySecret = "SELECT
-secret
+secret, nome
 FROM
 professores
 where id='$wid'";
@@ -30,13 +30,15 @@ if ($resultSecret = $mysqli->query($querySecret)) {
 
 	while ($rowSecret = $resultSecret->fetch_assoc()) {
     $secret_db	=	$rowSecret["secret"];
-		
+    $wNome 	=	$rowSecret["nome"];		
 
 }}
 
 if($mysecretsession != $secret_db ) { header('Location: https://comoestou.app.br/'); exit(); }
 
 //-------------------------------------------------------------------------
+
+$primeiroNome = strtok($wNome, ' ');
 
 ?>
 <!doctype html>
@@ -182,7 +184,7 @@ if($mysecretsession != $secret_db ) { header('Location: https://comoestou.app.br
     </button>
     <div class="collapse navbar-collapse" id="navbarToggler">
       <a class="navbar-brand" href="javascript:void(0);"><img src="./imagens/logo_topo.svg" class="img-responsive"></a>
-      <div class="nome_user"><i class="fas fa-smile-beam myicon"></i>Olá, Daniel!</div>
+      <div class="nome_user"><i class="fas fa-smile-beam myicon"></i>Olá, <?php echo $primeiroNome; ?></div>
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 <!-- ____________________________________________________________________________________ -->
         <li class="nav-item">
