@@ -55,14 +55,14 @@ if($action=="1") {
     //ALVO: 1 - SALAS
     if($target=="1" and $value) {
     $mysqli -> query("INSERT INTO salas (professor_id, nome) VALUES ('$wid', '$value')");
-    echo "sucess"; exit();
+    echo "success"; exit();
     }
 
 
     //ALVO: 2 - ALUNOS
     if($target=="2" and $key_id and $value) {
         $mysqli -> query("INSERT INTO alunos (professor_id, sala_id, nome) VALUES ('$wid', '$key_id', '$value')");
-        echo "sucess"; exit();
+        echo "success"; exit();
         }
 
     //ALVO: 3 - EMOTIONS
@@ -71,35 +71,35 @@ if($action=="1") {
         switch ($value) {
             case 'antecipacao':
                 $mysqli -> query("INSERT INTO emocoes (aluno_id, antecipacao, data, hora) VALUES ('$key_id', '1', '$datahoje', '$horanow')");
-                echo "sucess"; exit();
+                echo "success"; exit();
             break;
             case 'aversao':
                 $mysqli -> query("INSERT INTO emocoes (aluno_id, aversao, data, hora) VALUES ('$key_id', '1', '$datahoje', '$horanow')");
-                echo "sucess"; exit();
+                echo "success"; exit();
             break;
             case 'confianca':
                 $mysqli -> query("INSERT INTO emocoes (aluno_id, confianca, data, hora) VALUES ('$key_id', '1', '$datahoje', '$horanow')");
-                echo "sucess"; exit();
+                echo "success"; exit();
             break;
             case 'feliz':
                 $mysqli -> query("INSERT INTO emocoes (aluno_id, feliz, data, hora) VALUES ('$key_id', '1', '$datahoje', '$horanow')");
-                echo "sucess"; exit();
+                echo "success"; exit();
             break;
             case 'medo':
                 $mysqli -> query("INSERT INTO emocoes (aluno_id, medo, data, hora) VALUES ('$key_id', '1', '$datahoje', '$horanow')");
-                echo "sucess"; exit();
+                echo "success"; exit();
             break;
             case 'raiva':
                 $mysqli -> query("INSERT INTO emocoes (aluno_id, raiva, data, hora) VALUES ('$key_id', '1', '$datahoje', '$horanow')");
-                echo "sucess"; exit();
+                echo "success"; exit();
             break;
             case 'surpresa':
                 $mysqli -> query("INSERT INTO emocoes (aluno_id, surpresa, data, hora) VALUES ('$key_id', '1', '$datahoje', '$horanow')");
-                echo "sucess"; exit();
+                echo "success"; exit();
             break;
             case 'triste':
                 $mysqli -> query("INSERT INTO emocoes (aluno_id, triste, data, hora) VALUES ('$key_id', '1', '$datahoje', '$horanow')");
-                echo "sucess"; exit();
+                echo "success"; exit();
             break;
 
         }   
@@ -115,13 +115,13 @@ if($action=="2") {
     //ALVO: 1 - SALAS
     if($target=="1" and $key_id and $value) {
     $mysqli -> query("UPDATE salas SET nome = '$value' WHERE id = '$key_id'");
-    echo "sucess"; exit();
+    echo "success"; exit();
     }
 
     //ALVO: 2 - ALUNOS
     if($target=="2" and $key_id and $value) {
         $mysqli -> query("UPDATE alunos SET nome = '$value' WHERE id = '$key_id'");
-        echo "sucess"; exit();
+        echo "success"; exit();
         }
 
 }
@@ -132,14 +132,14 @@ if($action=="3") {
     //ALVO: 1 - SALAS
     if($target=="1" and $key_id) {
     $mysqli -> query("DELETE FROM salas WHERE id = '$key_id'");
-    echo "sucess"; exit();
+    echo "success"; exit();
     }
 
 
     //ALVO: 2 - ALUNOS
     if($target=="2" and $key_id) {
         $mysqli -> query("DELETE FROM alunos WHERE id = '$key_id'");
-        echo "sucess"; exit();
+        echo "success"; exit();
         }
 
 }
