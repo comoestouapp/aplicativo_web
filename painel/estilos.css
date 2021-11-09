@@ -160,4 +160,16 @@
     /*content: '\icon';*/
    }
 
+   .modal-body{
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+}
    /* PERSONALIZAR BOOTSTRAP MENU FIM */
+
+   #msg5,  #msg6,  #msg6,  #msg7,  #msg8 {
+    height: auto;
+    color:#AE0002;
+    font-family: 'Poppins', Arial, sans-serif;
+    font-size: 0.8em;
+    padding: 0.6em;
+    }
