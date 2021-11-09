@@ -132,6 +132,7 @@ if($action=="3") {
     //ALVO: 1 - SALAS
     if($target=="1" and $key_id) {
     $mysqli -> query("DELETE FROM salas WHERE id = '$key_id'");
+    $mysqli -> query("DELETE FROM alunos WHERE sala_id = '$key_id'");
     echo "success"; exit();
     }
 
