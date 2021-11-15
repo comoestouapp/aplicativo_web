@@ -77,3 +77,23 @@ CREATE TABLE `salas` (
   `nome_sala` tinytext CHARACTER SET latin1,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+#
+# Structure for the `visitors` table : */
+#
+
+CREATE TABLE `visitors` (
+  `id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `ip` VARCHAR(15) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `dispositivo` VARCHAR(15) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `os` VARCHAR(25) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `navegador` TINYTEXT COLLATE utf8_unicode_ci,
+  `url_origem` VARCHAR(512) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `data` DATE DEFAULT NULL,
+  `hora` TIME NOT NULL,
+  PRIMARY KEY USING BTREE (`id`)
+) ENGINE=MyISAM
+AUTO_INCREMENT=1 CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci';
+
+
