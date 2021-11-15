@@ -1,3 +1,165 @@
+<?php
+date_default_timezone_set('America/Sao_Paulo');
+$datahoje = date("Y/m/d");
+$horanow = date("H:i:s");
+$ip_correto = "";
+$referrer = "";
+$useragent = "";
+//-------------------------------------------------------------------------
+header("Access-Control-Allow-Origin: https://comoestou.app.br");
+//-------------------------------------------------------------------------
+
+//--------------------------------------------------------
+// SOLICITA CONEXÃO COM O BANCO DE DADOS
+require ( 'common/connect.php' );
+//***************************************
+
+//######################################################################################################################
+//PEGAR IP DO CLIENTE
+$clientIP = $_SERVER['HTTP_CLIENT_IP'] 
+    ?? $_SERVER["HTTP_CF_CONNECTING_IP"] # quando tiver protegido pelo cloudflare
+    ?? $_SERVER['HTTP_X_FORWARDED'] 
+    ?? $_SERVER['HTTP_X_FORWARDED_FOR'] 
+    ?? $_SERVER['HTTP_FORWARDED'] 
+    ?? $_SERVER['HTTP_FORWARDED_FOR'] 
+    ?? $_SERVER['REMOTE_ADDR'] 
+    ?? '0.0.0.0';
+
+# Antes do PHP7
+$clientIP = '0.0.0.0';
+
+if (isset($_SERVER['HTTP_CLIENT_IP'])) {
+    $clientIP = $_SERVER['HTTP_CLIENT_IP'];
+} elseif (isset($_SERVER['HTTP_CF_CONNECTING_IP'])) {
+    # quando tiver protegido pelo cloudflare
+    $clientIP = $_SERVER['HTTP_CF_CONNECTING_IP']; 
+} elseif (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+    $clientIP = $_SERVER['HTTP_X_FORWARDED_FOR'];
+} elseif (isset($_SERVER['HTTP_X_FORWARDED'])) {
+    $clientIP = $_SERVER['HTTP_X_FORWARDED'];
+} elseif (isset($_SERVER['HTTP_FORWARDED_FOR'])) {
+    $clientIP = $_SERVER['HTTP_FORWARDED_FOR'];
+} elseif (isset($_SERVER['HTTP_FORWARDED'])) {
+    $clientIP = $_SERVER['HTTP_FORWARDED'];
+} elseif (isset($_SERVER['REMOTE_ADDR'])) {
+    $clientIP = $_SERVER['REMOTE_ADDR'];
+}
+//######################################################################################################################
+//=====================================================
+require_once "common/Mobile_Detect.php";
+$detect = new Mobile_Detect;
+$meu_device="Computador";
+$meu_sistema="Desconhecido";
+
+// Any mobile device (phones or tablets).
+if ( $detect->isMobile() ) {
+$meu_device="Celular";
+}
+ 
+// Any tablet device.
+if( $detect->isTablet() ){
+$meu_device="Computador";
+}
+
+// Check for a specific platform with the help of the magic methods:
+if( $detect->isiOS() ){
+$meu_sistema="iOS";
+}
+ 
+if( $detect->isAndroidOS() ){
+$meu_sistema="Android";
+}
+//=====================================================
+$ip_correto = $clientIP;
+
+if(isset($_SERVER['HTTP_REFERER'])) {
+  $referrer = $_SERVER['HTTP_REFERER'];  
+   }
+else
+{
+  $referrer = "acesso direto";
+}
+
+$useragent = $_SERVER['HTTP_USER_AGENT'];
+
+//===============================================================
+// desktop: Windows, Linux, Mac, Nuzzel, Twitterbot, WhatsApp, datagnionbot, facebookexternalhit, dataminr, Googlebot, PaperLiBot, TrendsmapResolver
+if($meu_device=="Computador") {
+
+    if (strpos($useragent,'Windows') !== false) {
+    $meu_sistema="Windows";
+    }
+    if (strpos($useragent,'Linux') !== false) {
+    $meu_sistema="Linux";
+    }
+    if (strpos($useragent,'Mac') !== false) {
+    $meu_sistema="Mac OSX";
+    }
+    if (strpos($useragent,'Nuzzel') !== false) {
+    $meu_sistema="Nuzzel";
+    }
+    if (strpos($useragent,'Twitterbot') !== false) {
+    $meu_sistema="Twitterbot";
+    }
+    if (strpos($useragent,'WhatsApp') !== false) {
+    $meu_sistema="WhatsApp";
+    }
+    if (strpos($useragent,'DatagnionBot') !== false) {
+    $meu_sistema="Datagnionbot";
+    }
+    if (strpos($useragent,'facebookexternalhit') !== false) {
+    $meu_sistema="FacebookExternalHit";
+    }
+    if (strpos($useragent,'dataminr') !== false) {
+    $meu_sistema="Dataminr";
+    }
+    if (strpos($useragent,'Googlebot') !== false) {
+    $meu_sistema="Googlebot";
+    }
+    if (strpos($useragent,'AdsBot-Google') !== false) {
+    $meu_sistema="Googlebot";
+    }
+    if (strpos($useragent,'PaperLiBot') !== false) {
+    $meu_sistema="PaperLiBot";
+    }
+    if (strpos($useragent,'TrendsmapResolver') !== false) {
+    $meu_sistema="TrendsmapResolver";
+    }
+    if (strpos($useragent,'AhrefsBot') !== false) {
+    $meu_sistema="AhrefsBot";
+    }
+
+//incluir comando para desktop
+$mycss = "desktop.css";
+
+}
+
+//===============================================================
+// mobile
+if($meu_device=="Celular") {
+
+    if (strpos($useragent,'Windows Phone') !== false) {
+    $meu_sistema="Windows Phone";
+    }
+	
+//incluir comando para mobile
+$mycss = "mobile.css";
+
+}
+
+//===============================================================
+//INSERIR DADOS NO DB
+
+$mysqli -> query("INSERT INTO visitors
+( ip, dispositivo, os, navegador, url_origem, data, hora )
+VALUES
+( \"$ip_correto\", \"$meu_device\",\"$meu_sistema\", \"$useragent\", \"$referrer\", \"$datahoje\", \"$horanow\" )");
+
+//=====================================================
+//######################################################################################################################
+
+
+?>
 <!doctype html>
 <html>
 <head>
@@ -11,7 +173,7 @@
 <!-- ################################################################# !-->
 <meta name="viewport" content="user-scalable=no">
 <!-- ################################################################# !-->
-<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml">
+<link rel="icon" href="https://comoestou.app.br/favicon.svg" sizes="any" type="image/svg+xml">
 <meta name="geo.country" content="BR">
 <meta name="description" content="Aplicativo web para o acompanhamento emocional do aluno.">
 <meta name="author" content="Daniel Villela">
@@ -30,10 +192,10 @@
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700;800;900&display=swap">
 <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-<link rel="stylesheet" href="./login/style.css">
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+<link rel="stylesheet" href="./login/<?php echo $mycss; ?>">
 <style>
   body {
   background: #074791;

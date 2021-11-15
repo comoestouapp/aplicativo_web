@@ -2,6 +2,8 @@
 date_default_timezone_set('America/Sao_Paulo');
 $datahoje = date("Y/m/d");
 $horanow = date("H:i:s");
+$referrer = "";
+$useragent = "";
 //-------------------------------------------------------------------------
 header("Access-Control-Allow-Origin: https://comoestou.app.br");
 //-------------------------------------------------------------------------
@@ -40,6 +42,100 @@ if($mysecretsession != $secret_db ) { header('Location: https://comoestou.app.br
 
 $primeiroNome = strtok($wNome, ' ');
 
+
+//######################################################################################################################
+//=====================================================
+require_once "../common/Mobile_Detect.php";
+$detect = new Mobile_Detect;
+$meu_device="Computador";
+$meu_sistema="Desconhecido";
+
+// Any mobile device (phones or tablets).
+if ( $detect->isMobile() ) {
+$meu_device="Celular";
+}
+ 
+// Any tablet device.
+if( $detect->isTablet() ){
+$meu_device="Computador";
+}
+
+// Check for a specific platform with the help of the magic methods:
+if( $detect->isiOS() ){
+$meu_sistema="iOS";
+}
+ 
+if( $detect->isAndroidOS() ){
+$meu_sistema="Android";
+}
+//=====================================================
+$referrer = $_SERVER['HTTP_REFERER'];
+$useragent = $_SERVER['HTTP_USER_AGENT'];
+//===============================================================
+// desktop: Windows, Linux, Mac, Nuzzel, Twitterbot, WhatsApp, datagnionbot, facebookexternalhit, dataminr, Googlebot, PaperLiBot, TrendsmapResolver
+if($meu_device=="Computador") {
+
+    if (strpos($useragent,'Windows') !== false) {
+    $meu_sistema="Windows";
+    }
+    if (strpos($useragent,'Linux') !== false) {
+    $meu_sistema="Linux";
+    }
+    if (strpos($useragent,'Mac') !== false) {
+    $meu_sistema="Mac OSX";
+    }
+    if (strpos($useragent,'Nuzzel') !== false) {
+    $meu_sistema="Nuzzel";
+    }
+    if (strpos($useragent,'Twitterbot') !== false) {
+    $meu_sistema="Twitterbot";
+    }
+    if (strpos($useragent,'WhatsApp') !== false) {
+    $meu_sistema="WhatsApp";
+    }
+    if (strpos($useragent,'DatagnionBot') !== false) {
+    $meu_sistema="Datagnionbot";
+    }
+    if (strpos($useragent,'facebookexternalhit') !== false) {
+    $meu_sistema="FacebookExternalHit";
+    }
+    if (strpos($useragent,'dataminr') !== false) {
+    $meu_sistema="Dataminr";
+    }
+    if (strpos($useragent,'Googlebot') !== false) {
+    $meu_sistema="Googlebot";
+    }
+    if (strpos($useragent,'AdsBot-Google') !== false) {
+    $meu_sistema="Googlebot";
+    }
+    if (strpos($useragent,'PaperLiBot') !== false) {
+    $meu_sistema="PaperLiBot";
+    }
+    if (strpos($useragent,'TrendsmapResolver') !== false) {
+    $meu_sistema="TrendsmapResolver";
+    }
+    if (strpos($useragent,'AhrefsBot') !== false) {
+    $meu_sistema="AhrefsBot";
+    }
+
+//incluir comando para desktop
+$mycss = "desktop.css";
+
+}
+
+//===============================================================
+// mobile
+if($meu_device=="Celular") {
+
+    if (strpos($useragent,'Windows Phone') !== false) {
+    $meu_sistema="Windows Phone";
+    }
+	
+//incluir comando para mobile
+$mycss = "mobile.css";
+
+}
+//######################################################################################################################
 ?>
 <!doctype html>
 <html>
@@ -76,7 +172,7 @@ $primeiroNome = strtok($wNome, ' ');
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-<link rel="stylesheet" href="./estilos.css">
+<link rel="stylesheet" href="./<?php echo $mycss; ?>">
 </head>
 <body>
 <!-- ################################################################# !-->
