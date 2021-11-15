@@ -219,7 +219,7 @@ $primeiroNome = strtok($wNome, ' ');
   <div class="row align-items-center w-100">
     <div class="col-sm"></div>
     <div class="col-sm">
-      <video width="600" height="600" autoplay loop>
+      <video width="600" height="600" autoplay="autoplay" loop="loop" muted="muted" defaultMuted playsinline oncontextmenu="return false;" preload="auto">
         <source src="./videos/focus.mp4" type="video/mp4" />
         <source src="./videos/focus.ogg" type="video/ogg" />
         Seu navegador não suporta tag de vídeo (HTML5).
