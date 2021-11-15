@@ -75,7 +75,6 @@ $primeiroNome = strtok($wNome, ' ');
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <link rel="stylesheet" href="./estilos.css">
 </head>
@@ -134,7 +133,6 @@ $primeiroNome = strtok($wNome, ' ');
             <label class="input-group-text" for="inputNovoAluno">Sala:</label>
           </div>
           <select class="custom-select" id="inputNovoAluno">
-          <div id="listarSalasAlunos"></div>
           </select>
         </div>
         <div id="ShowMyNovoAluno" style="display:none;">
@@ -166,7 +164,6 @@ $primeiroNome = strtok($wNome, ' ');
             <label class="input-group-text" for="inputListarSalaAluno">Sala:</label>
           </div>
           <select class="custom-select" id="inputListarSalaAluno">
-          <div id="listarSalasAlunos"></div>
           </select>
         </div>
         <div id="sHOWlistarMeusAlunos" class="text-muted" style="display:none;"></div>
@@ -183,7 +180,7 @@ $primeiroNome = strtok($wNome, ' ');
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarToggler">
-      <a class="navbar-brand" href="javascript:void(0);"><img src="./imagens/logo_topo.svg" class="img-responsive"></a>
+      <div class="navbar-brand"><img src="./imagens/logo_topo.svg" class="img-responsive"></div>
       <div class="nome_user"><i class="fas fa-smile-beam myicon"></i>Olá, <?php echo $primeiroNome; ?></div>
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 <!-- ____________________________________________________________________________________ -->
@@ -218,7 +215,19 @@ $primeiroNome = strtok($wNome, ' ');
     </div>
   </nav>
 <!-- ################################################ -->
-<div id="painel"></div>
+<div id="painel">
+  <div class="row align-items-center w-100">
+    <div class="col-sm"></div>
+    <div class="col-sm">
+      <video width="600" height="600" autoplay loop>
+        <source src="./videos/focus.mp4" type="video/mp4" />
+        <source src="./videos/focus.ogg" type="video/ogg" />
+        Seu navegador não suporta tag de vídeo (HTML5).
+      </video>
+    </div>
+    <div class="col-sm">&nbsp;</div>
+  </div>
+</div>
 <script  src="./script.js"></script>
 </body>
 </html>
