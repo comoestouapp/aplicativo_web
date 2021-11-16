@@ -42,6 +42,8 @@ if($mysecretsession != $secret_db ) { header('Location: https://comoestou.app.br
 
 $primeiroNome = strtok($wNome, ' ');
 
+$primeiroNome = ucfirst($primeiroNome);
+
 
 //######################################################################################################################
 //=====================================================
@@ -285,7 +287,7 @@ $myexpand = "navbar-expand-lg";
     </button>
     <div class="collapse navbar-collapse" id="navbarToggler">
       <div class="navbar-brand"><img src="./imagens/logo_topo.svg" id="mylogo"></div>
-      <div class="nome_user"><i class="fas fa-smile-beam"></i>&nbsp;Olá, <?php echo $primeiroNome; ?></div>
+      <div class="nome_user"><i class="fas fa-smile-beam"></i>&nbsp;Olá <?php echo $primeiroNome; ?>!</div>
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 <!-- ____________________________________________________________________________________ -->
         <li class="nav-item">
