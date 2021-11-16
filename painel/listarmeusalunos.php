@@ -44,15 +44,14 @@ if ($resultListar = $mysqli->query($queryListar)) {
     $Nome_Aluno  	=	$rowListar["nome"];
 
 echo "<div class='d-flex' style='background-color: $mycolor'>
-<div class='mr-auto p-2'><i class=\"fas fa-caret-right\"></i>&nbsp;$Nome_Aluno</div>
-<!-- <div class='p-2'><button type='button' class='btn btn-info' value='$id_de_Aluno' id='btAlunoListEdit'><i class='fas fa-edit myicon'></i>Editar</button></div> -->
-<div class='p-2'><button type='button' class='btn btn-danger'  value='$id_de_Aluno' id='btAlunoListDelete'><i class='far fa-trash-alt myicon'></i>Excluir</button></div>
+<div class='mr-auto p-2 adjustfont'><i class=\"fas fa-caret-right\"></i>&nbsp;$Nome_Aluno</div>
+<div class='p-2'><button type='button' class='btn btn-danger btninside'  value='$id_de_Aluno' id='btAlunoListDelete'><i class='far fa-trash-alt'></i>&nbsp;&nbsp;Excluir</button></div>
 </div>";
 
 if($mycolor=="#efefef") {$mycolor="#FFF";} else {$mycolor="#efefef";}
 
 }}
 
-if(!$Nome_Aluno) { echo "<p>Sem alunos cadastrados nesta sala.</p>"; exit();}
+if(!$Nome_Aluno) { echo "<p class=\"adjustfont\">Sem alunos cadastrados nesta sala.</p>"; exit();}
 
 ?>

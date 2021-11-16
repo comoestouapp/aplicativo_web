@@ -40,15 +40,15 @@ if ($resultListar = $mysqli->query($queryListar)) {
     $Sala_de_Aula  	=	$rowListar["nome"];
 
 echo "<div class='d-flex' style='background-color: $mycolor'>
-<div class='mr-auto p-2'><i class=\"fas fa-caret-right\"></i>&nbsp;$Sala_de_Aula</div>
-<!-- <div class='p-2'><button type='button' class='btn btn-info' value='$id_de_Aula' id='btSalaAulaEdit'><i class='fas fa-edit myicon'></i>Editar</button></div> -->
-<div class='p-2'><button type='button' class='btn btn-danger'  value='$id_de_Aula' id='btSalaAulaDelete'><i class='far fa-trash-alt myicon'></i>Excluir</button></div>
+<div class='mr-auto p-2 adjustfont'><i class=\"fas fa-caret-right\"></i>&nbsp;$Sala_de_Aula</div>
+<!-- <div class='p-2'><button type='button' class='btn btn-info btninside' value='$id_de_Aula' id='btSalaAulaEdit'><i class='fas fa-edit myicon'></i>Editar</button></div> -->
+<div class='p-2'><button type='button' class='btn btn-danger btninside'  value='$id_de_Aula' id='btSalaAulaDelete'><i class='far fa-trash-alt myicon'></i>Excluir</button></div>
 </div>";
 
 if($mycolor=="#efefef") {$mycolor="#FFF";} else {$mycolor="#efefef";}
 
 }}
 
-if(!$Sala_de_Aula) { echo "<p>Sem salas cadastradas</p>"; exit();}
+if(!$Sala_de_Aula) { echo "<p class=\"adjustfont\">Sem salas cadastradas</p>"; exit();}
 
 ?>

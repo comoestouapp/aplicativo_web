@@ -1,4 +1,6 @@
-
+html, body {
+  min-width: 980px;
+}
 /* PERSONALIZAR BOOTSTRAP MENU INICIO */
 .nome_user {
     color: #6f2526;
@@ -8,6 +10,8 @@
 /*------------------------------------*/
 .navbar {
     background-color: #ffbcc1;
+    font-size: 1.2vw;
+    white-space: nowrap;
   }
   .navbar .navbar-brand {
     color: #d2707b;

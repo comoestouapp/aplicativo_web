@@ -195,7 +195,7 @@ $myexpand = "navbar-expand-lg";
         <div id="listarSalas" class="text-muted"></div>
       </div>
               <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+          <button type="button" class="btn btn-secondary btnmodal" data-dismiss="modal">Fechar</button>
         </div>
     </div>
   </div>
@@ -204,21 +204,21 @@ $myexpand = "navbar-expand-lg";
 <!-- ################################################################# !-->
 <!-- Nova Sala -->
 <div class="modal fade" id="NovaSalaModal" role="dialog" data-keyboard="false" data-backdrop="static">
-  <div class="modal-dialog rubberBand animated" role="document">
+  <div class="modal-dialog modal-dialog-centered rubberBand animated" role="document">
     <div class="modal-content">
       <div class="modal-header alert-primary">
         <h3 class="modal-title" id="myModalLabel">Criar Nova Sala</h3>
       </div>
       <div id="meu_modal" class="modal-body modalshow">
-        <p>Informe o NOME da Sala:</p>
+        <p class="adjustfont">Informe o NOME da Sala:</p>
         <div class="form-group">
-          <input class="form-control input-lg" id="NovaSalavalue" type="text" size="20" maxlength="25" autocomplete="off">
+          <input class="form-control input-lg adjustfont" id="NovaSalavalue" type="text" size="20" maxlength="25" autocomplete="off">
           <div id="msg5"></div>
         </div>
       </div>
               <div class="modal-footer">
-          <button type="button" class="btn btn-success" id="btNovaSala">Gravar</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btcancel">Fechar</button>
+          <button type="button" class="btn btn-success btnmodal" id="btNovaSala">Gravar</button>
+          <button type="button" class="btn btn-secondary btnmodal" data-dismiss="modal" id="btcancel">Fechar</button>
         </div>
     </div>
   </div>
@@ -226,7 +226,7 @@ $myexpand = "navbar-expand-lg";
 <!-- =================================================================== -->
 <!-- Novo Aluno -->
 <div class="modal fade" id="NovoAlunoModal" role="dialog" data-keyboard="false" data-backdrop="static">
-  <div class="modal-dialog rubberBand animated" role="document">
+  <div class="modal-dialog modal-dialog-centered rubberBand animated" role="document">
     <div class="modal-content">
       <div class="modal-header alert-primary">
         <h3 class="modal-title" id="myModalLabel">Cadastrar Novo Aluno</h3>
@@ -234,22 +234,22 @@ $myexpand = "navbar-expand-lg";
       <div id="meu_modal" class="modal-body modalshow">
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-            <label class="input-group-text" for="inputNovoAluno">Sala:</label>
+            <label class="input-group-text adjustfont" for="inputNovoAluno">Sala:</label>
           </div>
-          <select class="custom-select" id="inputNovoAluno">
+          <select class="custom-select adjustfont" id="inputNovoAluno">
           </select>
         </div>
         <div id="ShowMyNovoAluno" style="display:none;">
-          <p>Informe o NOME do aluno:</p>
+          <p class="adjustfont">Informe o NOME do aluno:</p>
           <div class="form-group">
-            <input class="form-control input-lg" id="NovoAlunovalue" type="text" size="20" maxlength="25" autocomplete="off">
+            <input class="form-control input-lg adjustfont" id="NovoAlunovalue" type="text" size="20" maxlength="25" autocomplete="off">
             <div id="msg6"></div>
           </div>
         </div>
       </div>
           <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" id="btNovaSalaAluno" disabled='disabled'>Gravar</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btcancelNovoAluno">Fechar</button>
+          <button type="button" class="btn btn-secondary btnmodal" id="btNovaSalaAluno" disabled='disabled'>Gravar</button>
+          <button type="button" class="btn btn-secondary btnmodal" data-dismiss="modal" id="btcancelNovoAluno">Fechar</button>
         </div>
     </div>
   </div>
@@ -257,7 +257,7 @@ $myexpand = "navbar-expand-lg";
 <!-- =================================================================== -->
 <!-- Listar  Alunos -->
 <div class="modal fade" id="ListarlunosModal" role="dialog" data-keyboard="false" data-backdrop="static">
-  <div class="modal-dialog rubberBand animated" role="document">
+  <div class="modal-dialog modal-dialog-centered rubberBand animated" role="document">
     <div class="modal-content">
       <div class="modal-header alert-primary">
         <h3 class="modal-title" id="myModalLabel">Meus Alunos</h3>
@@ -265,15 +265,15 @@ $myexpand = "navbar-expand-lg";
       <div id="meu_modal" class="modal-body modalshow">
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-            <label class="input-group-text" for="inputListarSalaAluno">Sala:</label>
+            <label class="input-group-text adjustfont" for="inputListarSalaAluno">Sala:</label>
           </div>
-          <select class="custom-select" id="inputListarSalaAluno">
+          <select class="custom-select adjustfont" id="inputListarSalaAluno">
           </select>
         </div>
         <div id="sHOWlistarMeusAlunos" class="text-muted" style="display:none;"></div>
       </div>
           <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btcancelListarAluno">Fechar</button>
+          <button type="button" class="btn btn-secondary btnmodal" data-dismiss="modal" id="btcancelListarAluno">Fechar</button>
         </div>
     </div>
   </div>
@@ -284,8 +284,8 @@ $myexpand = "navbar-expand-lg";
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarToggler">
-      <div class="navbar-brand"><img src="./imagens/logo_topo.svg" class="img-responsive"></div>
-      <div class="nome_user"><i class="fas fa-smile-beam myicon"></i>Olá, <?php echo $primeiroNome; ?></div>
+      <div class="navbar-brand"><img src="./imagens/logo_topo.svg" id="mylogo"></div>
+      <div class="nome_user"><i class="fas fa-smile-beam"></i>&nbsp;Olá, <?php echo $primeiroNome; ?></div>
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 <!-- ____________________________________________________________________________________ -->
         <li class="nav-item">
@@ -314,7 +314,7 @@ $myexpand = "navbar-expand-lg";
 <!-- ____________________________________________________________________________________ -->
       </ul>
       <p class="my-2 my-lg-0">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="logoutMe"><i class="fas fa-sign-out-alt myicon"></i>Sair</button>
+        <button class="btn btn-outline-success my-2 my-sm-0 btnsair" type="submit" id="logoutMe"><i class="fas fa-sign-out-alt myicon"></i>Sair</button>
       </p>
     </div>
   </nav>
@@ -323,7 +323,7 @@ $myexpand = "navbar-expand-lg";
   <div class="row align-items-center w-100">
     <div class="col-sm"></div>
     <div class="col-sm">
-      <video width="600" height="600" autoplay="autoplay" loop="loop" muted="muted" defaultMuted playsinline oncontextmenu="return false;" preload="auto">
+      <video width="550" height="550" autoplay="autoplay" loop="loop" muted="muted" defaultMuted playsinline oncontextmenu="return false;" preload="auto">
         <source src="./videos/focus.mp4" type="video/mp4" />
         <source src="./videos/focus.ogg" type="video/ogg" />
         Seu navegador não suporta tag de vídeo (HTML5).
