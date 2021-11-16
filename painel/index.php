@@ -69,7 +69,13 @@ if( $detect->isAndroidOS() ){
 $meu_sistema="Android";
 }
 //=====================================================
-$referrer = $_SERVER['HTTP_REFERER'];
+if(isset($_SERVER['HTTP_REFERER'])) {
+  $referrer = $_SERVER['HTTP_REFERER'];  
+   }
+else
+{
+  $referrer = "acesso direto";
+}
 $useragent = $_SERVER['HTTP_USER_AGENT'];
 //===============================================================
 // desktop: Windows, Linux, Mac, Nuzzel, Twitterbot, WhatsApp, datagnionbot, facebookexternalhit, dataminr, Googlebot, PaperLiBot, TrendsmapResolver
@@ -120,6 +126,7 @@ if($meu_device=="Computador") {
 
 //incluir comando para desktop
 $mycss = "desktop.css";
+$myexpand = "navbar-expand";
 
 }
 
@@ -133,6 +140,7 @@ if($meu_device=="Celular") {
 	
 //incluir comando para mobile
 $mycss = "mobile.css";
+$myexpand = "navbar-expand-lg";
 
 }
 //######################################################################################################################
@@ -271,7 +279,7 @@ $mycss = "mobile.css";
   </div>
 </div>
 <!-- ###################### MENU ########################## -->
-  <nav class="navbar navbar-expand-lg navbar-dark">
+  <nav class="navbar <?php echo $myexpand; ?> navbar-dark">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
