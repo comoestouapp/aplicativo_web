@@ -282,11 +282,11 @@ $myexpand = "navbar-expand-lg";
 </div>
 <!-- ###################### MENU ########################## -->
   <nav class="navbar <?php echo $myexpand; ?> navbar-dark">
+    <div class="navbar-brand"><img src="./imagens/logo_topo.svg" id="mylogo"></div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarToggler">
-      <div class="navbar-brand"><img src="./imagens/logo_topo.svg" id="mylogo"></div>
       <div class="nome_user"><i class="fas fa-smile-beam"></i>&nbsp;Olá <?php echo $primeiroNome; ?>!</div>
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 <!-- ____________________________________________________________________________________ -->
