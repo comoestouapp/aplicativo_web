@@ -145,6 +145,8 @@ $mycss = "mobile.css";
 $myexpand = "navbar-expand-lg";
 
 }
+
+
 //######################################################################################################################
 ?>
 <!doctype html>
@@ -175,16 +177,35 @@ $myexpand = "navbar-expand-lg";
 <meta property="og:image:secure_url" content="https://www.comoestou.app.br/ogimage.jpg">
 <meta property="og:url" content="https://comoestou.app.br/">
 <!-- ################################################################# !-->
+<link rel="preload" as="audio" href="videos/fireworks.mp3">
+<link rel="preload" as="video" href="videos/0raiva.mp4">
+<link rel="preload" as="video"href="videos/1aversao.mp4">
+<link rel="preload" as="video"href="videos/2medo.mp4">
+<link rel="preload" as="video"href="videos/3triste.mp4">
+<link rel="preload" as="video"href="videos/4surpresa.mp4">
+<link rel="preload" as="video"href="videos/5antecipacao.mp4">
+<link rel="preload" as="video"href="videos/6feliz.mp4">
+<link rel="preload" as="video"href="videos/7confianca.mp4">
+<!-- ################################################################# !-->
   <title>.: ComoEstou APP :.</title>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700;800;900&display=swap">
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <link rel="stylesheet" href="./<?php echo $mycss; ?>">
 </head>
 <body>
+<!-- ################################################################# !-->
+<div id="backcover" style="display:none;" >
+  <input type="hidden" id="masterSalaID" value="">
+  <div id="cover">
+    <div class="close"></div>
+    <div id="avaliarPainelShow"></div>
+  </div>
+</div>
 <!-- ################################################################# !-->
 <!-- Listar Sala Modal -->
 <div class="modal fade" id="ListarSalaModal" role="dialog" data-keyboard="false" data-backdrop="static">
@@ -280,6 +301,30 @@ $myexpand = "navbar-expand-lg";
     </div>
   </div>
 </div>
+<!-- =================================================================== -->
+<!-- Avaliar Sala -->
+<div class="modal fade" id="avaliarSalaModal" role="dialog" data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered rubberBand animated" role="document">
+    <div class="modal-content">
+      <div class="modal-header alert-primary">
+        <h3 class="modal-title" id="myModalLabel">Avaliar Alunos</h3>
+      </div>
+      <div id="meu_modal" class="modal-body modalshow">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+            <label class="input-group-text adjustfont" for="inputAvaliarListarSalaAluno">Sala:</label>
+          </div>
+          <select class="custom-select adjustfont" id="inputListarAvaliarSalaAluno">
+          </select>
+        </div>
+      </div>
+          <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btnmodal" id="btActionAvaliarSalaAluno" data-dismiss="modal" disabled='disabled'>Avaliar</button>
+          <button type="button" class="btn btn-secondary btnmodal" data-dismiss="modal" id="btCancelAvaliarSalaAluno">Fechar</button>
+        </div>
+    </div>
+  </div>
+</div>
 <!-- ###################### MENU ########################## -->
   <nav class="navbar <?php echo $myexpand; ?> navbar-dark">
     <div class="navbar-brand"><img src="./imagens/logo_topo.svg" id="mylogo"></div>
@@ -291,7 +336,7 @@ $myexpand = "navbar-expand-lg";
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 <!-- ____________________________________________________________________________________ -->
         <li class="nav-item">
-          <a class="nav-link" href="javascript:void(0);" id="avaliarAluno"><i class="fas fa-user-graduate myicon"></i>Avaliar Aluno</a>
+          <a class="nav-link" href="javascript:void(0);" id="btAvaliarAlunos"><i class="fas fa-user-graduate myicon"></i>Avaliar Alunos</a>
         </li>
 <!-- ____________________________________________________________________________________ -->
         <li class="nav-item dropdown">
@@ -335,5 +380,6 @@ $myexpand = "navbar-expand-lg";
   </div>
 </div>
 <script  src="./script.js"></script>
+<div id="trash" style="display:none;"></div>
 </body>
 </html>

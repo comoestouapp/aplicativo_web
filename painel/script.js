@@ -1,3 +1,32 @@
+$(document).ready(function() {
+
+  //FORCE VIDEO/AUDIO PRELOAD
+//################################################################################################
+var WSalaID = "preloadme";
+
+   $.ajax({
+    url:'https://comoestou.app.br/painel/alunosvotar.php',
+    type:'POST',						
+    data:{
+
+      preloadme:WSalaID
+
+    },
+    success:function (data){
+      if(data != null){
+        $("#trash").html(data);
+        console.log("audio e vídeos carregados!");  
+      }
+},
+    error:function(r) {
+    console.log(r);
+    },
+
+  });
+
+
+//################################################################################################
+
 $("#logoutMe").click(function () {
 
   window.location = "https://comoestou.app.br/logout/";
@@ -93,6 +122,114 @@ $('#inputListarSalaAluno').on('change', function() {
     }
   
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// AVALIAR ALUNOS ------------------------------------------------------------------------------------------------
+$("#btAvaliarAlunos").click(function () {
+
+  $('#avaliarSalaModal').modal({
+      backdrop: 'static',
+      keyboard: false
+  });
+
+//################################################################################################
+  
+            $.ajax({
+    url:'https://comoestou.app.br/painel/alunolistarsalas.php',
+    type:'POST',						
+    data:{
+
+    },
+    success:function (data){
+      if(data != null){
+        $("#inputListarAvaliarSalaAluno").html(data)
+      }
+},
+    error:function(r) {
+    console.log(r);
+    },
+
+  });   
+
+//################################################################################################
+});
+
+
+$('#inputListarAvaliarSalaAluno').on('change', function() {
+
+  if(this.value) {
+    
+    $("#masterSalaID").val(this.value);
+      $('#btActionAvaliarSalaAluno').removeClass('btn btn-secondary').addClass('btn btn-success');
+      $('#btActionAvaliarSalaAluno').prop("disabled",false);
+    } else {
+      $('#btActionAvaliarSalaAluno').removeClass('btn btn-success').addClass('btn btn-secondary');
+      $('#btActionAvaliarSalaAluno').prop("disabled",true);
+    }
+  
+});
+$(".close").click(function () {
+  $('#backcover').hide();
+  $("#avaliarPainelShow").html("");
+  
+
+});
+
+
+$("#btActionAvaliarSalaAluno").click(function () {
+  $('#avaliarSalaModal').hide(500).delay(1500);
+  $('#backcover').show(100);
+  var WSalaID = $("#masterSalaID").val();
+  //$("#avaliarPainelShow").html(WSalaID);
+     //################################################################################################
+  
+     $.ajax({
+      url:'https://comoestou.app.br/painel/alunosvotar.php',
+      type:'POST',						
+      data:{
+  
+        mysalaid:WSalaID
+  
+      },
+      success:function (data){
+        if(data != null){
+          $("#avaliarPainelShow").html(data);
+        }
+  },
+      error:function(r) {
+      console.log(r);
+      },
+  
+    });   
+  
+  //################################################################################################
+  
+});
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -501,5 +638,4 @@ var Wvalue = $("#NovaSalavalue").val();
 });
 //------------------------------------------------------------------------------------------------
 
-
-		
+});

@@ -43,7 +43,13 @@ if(!$wid) { echo "session"; exit(); }
     //-------------------------------------------------
     $value = filter_input(INPUT_POST, 'value', FILTER_SANITIZE_MAGIC_QUOTES);
     $value = substr($value, 0, 50);
-    $value = preg_replace("/[^a-zA-Z0-9\s]/", "", $value);
+    $value = preg_replace("/[^A-zÀ-ú0-9\s]/", "", $value);
+    //-------------------------------------------------
+
+    //SALA_ID
+    //-------------------------------------------------
+    $sala_id = filter_input(INPUT_POST, 'wsalaid', FILTER_SANITIZE_NUMBER_INT);
+    $sala_id = substr($sala_id, 0, 11);
     //-------------------------------------------------
 //***************************************************************
 
@@ -70,35 +76,43 @@ if($action=="1") {
 
         switch ($value) {
             case 'antecipacao':
-                $mysqli -> query("INSERT INTO emocoes (aluno_id, antecipacao, data, hora) VALUES ('$key_id', '1', '$datahoje', '$horanow')");
+                $mysqli -> query("INSERT INTO emocoes (aluno_id, sala_id, antecipacao, data, hora) VALUES ('$key_id', '$sala_id', '1', '$datahoje', '$horanow')");
+                $mysqli -> query("UPDATE alunos SET votou_em = '$datahoje' where id='$key_id'");
                 echo "success"; exit();
             break;
             case 'aversao':
-                $mysqli -> query("INSERT INTO emocoes (aluno_id, aversao, data, hora) VALUES ('$key_id', '1', '$datahoje', '$horanow')");
+                $mysqli -> query("INSERT INTO emocoes (aluno_id, sala_id, aversao, data, hora) VALUES ('$key_id', '$sala_id', '1', '$datahoje', '$horanow')");
+                $mysqli -> query("UPDATE alunos SET votou_em = '$datahoje' where id='$key_id'");
                 echo "success"; exit();
             break;
             case 'confianca':
-                $mysqli -> query("INSERT INTO emocoes (aluno_id, confianca, data, hora) VALUES ('$key_id', '1', '$datahoje', '$horanow')");
+                $mysqli -> query("INSERT INTO emocoes (aluno_id, sala_id, confianca, data, hora) VALUES ('$key_id', '$sala_id', '1', '$datahoje', '$horanow')");
+                $mysqli -> query("UPDATE alunos SET votou_em = '$datahoje' where id='$key_id'");
                 echo "success"; exit();
             break;
             case 'feliz':
-                $mysqli -> query("INSERT INTO emocoes (aluno_id, feliz, data, hora) VALUES ('$key_id', '1', '$datahoje', '$horanow')");
+                $mysqli -> query("INSERT INTO emocoes (aluno_id, sala_id, feliz, data, hora) VALUES ('$key_id', '$sala_id', '1', '$datahoje', '$horanow')");
+                $mysqli -> query("UPDATE alunos SET votou_em = '$datahoje' where id='$key_id'");
                 echo "success"; exit();
             break;
             case 'medo':
-                $mysqli -> query("INSERT INTO emocoes (aluno_id, medo, data, hora) VALUES ('$key_id', '1', '$datahoje', '$horanow')");
+                $mysqli -> query("INSERT INTO emocoes (aluno_id, sala_id, medo, data, hora) VALUES ('$key_id', '$sala_id', '1', '$datahoje', '$horanow')");
+                $mysqli -> query("UPDATE alunos SET votou_em = '$datahoje' where id='$key_id'");
                 echo "success"; exit();
             break;
             case 'raiva':
-                $mysqli -> query("INSERT INTO emocoes (aluno_id, raiva, data, hora) VALUES ('$key_id', '1', '$datahoje', '$horanow')");
+                $mysqli -> query("INSERT INTO emocoes (aluno_id, sala_id, raiva, data, hora) VALUES ('$key_id', '$sala_id', '1', '$datahoje', '$horanow')");
+                $mysqli -> query("UPDATE alunos SET votou_em = '$datahoje' where id='$key_id'");
                 echo "success"; exit();
             break;
             case 'surpresa':
-                $mysqli -> query("INSERT INTO emocoes (aluno_id, surpresa, data, hora) VALUES ('$key_id', '1', '$datahoje', '$horanow')");
+                $mysqli -> query("INSERT INTO emocoes (aluno_id, sala_id, surpresa, data, hora) VALUES ('$key_id', '$sala_id', '1', '$datahoje', '$horanow')");
+                $mysqli -> query("UPDATE alunos SET votou_em = '$datahoje' where id='$key_id'");
                 echo "success"; exit();
             break;
             case 'triste':
-                $mysqli -> query("INSERT INTO emocoes (aluno_id, triste, data, hora) VALUES ('$key_id', '1', '$datahoje', '$horanow')");
+                $mysqli -> query("INSERT INTO emocoes (aluno_id, sala_id, triste, data, hora) VALUES ('$key_id', '$sala_id', '1', '$datahoje', '$horanow')");
+                $mysqli -> query("UPDATE alunos SET votou_em = '$datahoje' where id='$key_id'");
                 echo "success"; exit();
             break;
 
@@ -133,6 +147,7 @@ if($action=="3") {
     if($target=="1" and $key_id) {
     $mysqli -> query("DELETE FROM salas WHERE id = '$key_id'");
     $mysqli -> query("DELETE FROM alunos WHERE sala_id = '$key_id'");
+    $mysqli -> query("DELETE FROM emocoes WHERE sala_id = '$key_id'");
     echo "success"; exit();
     }
 
@@ -140,6 +155,7 @@ if($action=="3") {
     //ALVO: 2 - ALUNOS
     if($target=="2" and $key_id) {
         $mysqli -> query("DELETE FROM alunos WHERE id = '$key_id'");
+        $mysqli -> query("DELETE FROM emocoes WHERE aluno_id = '$key_id'");
         echo "success"; exit();
         }
 
