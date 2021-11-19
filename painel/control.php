@@ -115,6 +115,11 @@ if($action=="1") {
                 $mysqli -> query("UPDATE alunos SET votou_em = '$datahoje' where id='$key_id'");
                 echo "success"; exit();
             break;
+            case 'alunoausente':
+                $mysqli -> query("INSERT INTO emocoes (aluno_id, sala_id, data, hora) VALUES ('$key_id', '$sala_id', '$datahoje', '$horanow')");
+                $mysqli -> query("UPDATE alunos SET votou_em = '$datahoje' where id='$key_id'");
+                echo "success"; exit();
+            break;
 
         }   
 

@@ -293,7 +293,10 @@ echo "<!-- ################################### -->
     Seu navegador não suporta tag de audio (HTML5).
 </audio>
 <!-- ################################### -->
-<div class=\"d-flex justify-content-center flex-nowrap\"><button type=\"button\" class=\"btn btn-xl btn-success\" id=\"btVotar\">Confirmar</button></div>
+<div class=\"d-flex justify-content-center flex-nowrap\">
+<button type=\"button\" class=\"btn btn-xl btn-success\" id=\"btVotar\">Confirmar</button>&nbsp;&nbsp;&nbsp;&nbsp;
+<button type=\"button\" class=\"btn btn-xl btn-danger\" id=\"btAusente\">Aluno Ausente</button>
+</div>
 <!-- ==== -->";
 
 
@@ -303,6 +306,8 @@ var myemotion = null;
 document.querySelectorAll('video').forEach(vid => vid.pause());
 $(\"#btVotar\").removeClass('btn btn-success').addClass('btn btn-secondary');
 $(\"#btVotar\").prop(\"disabled\",true);
+
+$(\"#btAusente\").removeClass('btn btn-danger').addClass('btn btn-secondary');
 
 //botão confirmar emoção
 $(\"#btVotar\").click(function () {
@@ -412,10 +417,21 @@ $(document).on('click touchstart','#myvideo', function() {
   this.play();
   $(this).attr(\"id\",\"vd_selecionado\");
   console.log(myemotion);
+  $(\"#btAusente\").removeClass('btn btn-danger').addClass('btn btn-secondary');
   $(\"#btVotar\").removeClass('btn btn-secondary').addClass('btn btn-success');
   $(\"#btVotar\").prop(\"disabled\",false);
  });
 
+ //ao clicar no botão aluno ausente
+ $(\"#btAusente\").click(function () {
+    myemotion = 'alunoausente';
+    console.log(myemotion);
+    $(\"#vd_selecionado\").removeClass().addClass('filter');
+    $(\"#vd_selecionado\").attr(\"id\",\"myvideo\");
+    $(\"#btAusente\").removeClass('btn btn-secondary').addClass('btn btn-danger');
+    $(\"#btVotar\").removeClass('btn btn-secondary').addClass('btn btn-success');
+    $(\"#btVotar\").prop(\"disabled\",false);
+});
  //--------------------------------------------------------------------
   var count = 200;
   var defaults = {
