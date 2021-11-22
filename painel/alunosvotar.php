@@ -360,6 +360,31 @@ $(\"#btVotar\").click(function () {
         success:function (data){
           if(data != null && data==\"success\") {
           console.log('inserido com sucesso!');
+
+          //################################################################################################
+          var WSalaID = $(\"#masterSalaID\").val();
+           $.ajax({
+            url:'https://comoestou.app.br/painel/alunosvotar.php',
+            type:'POST',						
+            data:{
+        
+              mysalaid:WSalaID
+        
+            },
+            success:function (data){
+              if(data != null){
+                $(\"#avaliarPainelShow\").html(data);
+              }
+        },
+            error:function(r) {
+            console.log(r);
+            },
+        
+          });   
+        
+        //################################################################################################
+
+
       }
     },
         error:function(r) {
@@ -369,28 +394,7 @@ $(\"#btVotar\").click(function () {
       });
   //------------------------------------------------------------------------------------------------
 
-  //################################################################################################
-  var WSalaID = $(\"#masterSalaID\").val();
-   $.ajax({
-    url:'https://comoestou.app.br/painel/alunosvotar.php',
-    type:'POST',						
-    data:{
 
-      mysalaid:WSalaID
-
-    },
-    success:function (data){
-      if(data != null){
-        $(\"#avaliarPainelShow\").html(data);
-      }
-},
-    error:function(r) {
-    console.log(r);
-    },
-
-  });   
-
-//################################################################################################
 
 });
 
