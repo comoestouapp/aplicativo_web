@@ -192,7 +192,7 @@ if ($resultListar = $mysqli->query($queryListar)) {
 //-----------------------------------------------------------------------------------
 
 echo "<!-- ################################### -->
-<div class=\"d-flex justify-content-center flex-nowrap mytitulo\"><b><span style=\"color: rgb(200, 20, 20);\">$Nome_Aluno</span></b>,&nbsp;como você se sentindo hoje?</div>
+<div class=\"d-flex justify-content-center flex-nowrap mytitulo\"><b><span style=\"color: rgb(200, 20, 20);\">$Nome_Aluno</span></b>,&nbsp;como você está se sentindo hoje?</div>
     <div class=\"container\">
         <div class=\"row\">
 <!-- ___________________________________ -->
