@@ -33,6 +33,18 @@ CREATE TABLE `emocoes` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 #
+# Structure for the `emocoes_list` table : 
+#
+
+CREATE TABLE `emocoes_list` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` tinytext,
+  `conteudo` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+
+#
 # Structure for the `logs` table : 
 #
 
