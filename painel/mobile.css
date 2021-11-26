@@ -433,3 +433,14 @@ z-index: -1;
   transform: rotate(-45deg);
 }
 /*-----------------------------------------------------*/
+.logosecretaria {
+  margin-top: 120px;
+  width: 250px;
+  height: 250px;
+}
+.vdmain{
+  position: relative;
+  display: block;
+  bottom: 120px;
+  z-index: -1;
+}

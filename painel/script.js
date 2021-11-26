@@ -130,6 +130,86 @@ $('#inputListarSalaAluno').on('change', function() {
 
 
 
+// RELATÓRIO  ------------------------------------------------------------------------------------------------
+$("#btRelatorioAccess").click(function () {
+
+  $('#RelatoriosModal').modal({
+      backdrop: 'static',
+      keyboard: false
+  });
+
+//################################################################################################
+  
+            $.ajax({
+    url:'https://comoestou.app.br/painel/alunolistarsalas.php',
+    type:'POST',						
+    data:{
+
+    },
+    success:function (data){
+      if(data != null){
+        $("#inputListarSalaAlunoRelatorio").html(data);
+      }
+},
+    error:function(r) {
+    console.log(r);
+    },
+
+  });   
+
+//################################################################################################
+});
+
+
+$('#inputListarSalaAlunoRelatorio').on('change', function() {
+  var mysalaid = $('#inputListarSalaAlunoRelatorio option:selected').val();
+
+  if(this.value) {
+
+    
+
+         //################################################################################################
+  
+         $.ajax({
+          url:'https://comoestou.app.br/painel/relatoriolistaralunos.php',
+          type:'POST',						
+          data:{
+
+            mysalaid:mysalaid
+      
+          },
+          success:function (data){
+            if(data != null){
+              $("#sHOWlistarMeusAlunosRelatorio").html(data);
+            }
+      },
+          error:function(r) {
+          console.log(r);
+          },
+      
+        });   
+      
+      //################################################################################################
+
+
+
+      $('#sHOWlistarMeusAlunosRelatorio').show(500);
+
+    } else {
+      $('#sHOWlistarMeusAlunosRelatorio').hide(500);;
+
+    }
+  
+});
+$("#btcancelRelatorio").click(function () {
+
+  $("#sHOWlistarMeusAlunosRelatorio").val("");
+  $('#sHOWlistarMeusAlunosRelatorio').hide(500);
+  }); 
+
+
+
+
 
 
 

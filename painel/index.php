@@ -207,6 +207,30 @@ $myexpand = "navbar-expand-lg";
   </div>
 </div>
 <!-- ################################################################# !-->
+<!-- Relatorios -->
+<div class="modal fade" id="RelatoriosModal" role="dialog" data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered rubberBand animated" role="document">
+    <div class="modal-content">
+      <div class="modal-header alert-primary">
+        <h3 class="modal-title" id="myModalLabel">Relatório Emocional</h3>
+      </div>
+      <div id="meu_modal" class="modal-body modalshow">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+            <label class="input-group-text adjustfont" for="inputListarSalaAlunoRelatorio">Sala:</label>
+          </div>
+          <select class="custom-select adjustfont" id="inputListarSalaAlunoRelatorio">
+          </select>
+        </div>
+        <div id="sHOWlistarMeusAlunosRelatorio" class="text-muted" style="display:none;"></div>
+      </div>
+          <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btnmodal" data-dismiss="modal" id="btcancelRelatorio">Fechar</button>
+        </div>
+    </div>
+  </div>
+</div>
+<!-- =================================================================== -->
 <!-- Listar Sala Modal -->
 <div class="modal fade" id="ListarSalaModal" role="dialog" data-keyboard="false" data-backdrop="static">
   <div class="modal-dialog modal-dialog-centered rubberBand animated" role="document">
@@ -335,12 +359,8 @@ $myexpand = "navbar-expand-lg";
       <div class="nome_user"><i class="fas fa-smile-beam"></i>&nbsp;Olá <?php echo $primeiroNome; ?>!</div>
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 <!-- ____________________________________________________________________________________ -->
-        <li class="nav-item">
-          <a class="nav-link" href="javascript:void(0);" id="btAvaliarAlunos"><i class="fas fa-user-graduate myicon"></i>Avaliar Alunos</a>
-        </li>
-<!-- ____________________________________________________________________________________ -->
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="javascript:void(0);" id="navbarGerenciarSalas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-door-closed myicon"></i>Gerenciar Salas de Aula</a>
+          <a class="nav-link dropdown-toggle" href="javascript:void(0);" id="navbarGerenciarSalas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-door-closed myicon"></i>1) Gerenciar Salas de Aula</a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <li><a class="dropdown-item" href="javascript:void(0);" id="btCriarSalas">Criar Nova</a></li>
           <li><a class="dropdown-item" href="javascript:void(0);" id="btListarSalas">Listar/Excluir</a></li>
@@ -348,15 +368,19 @@ $myexpand = "navbar-expand-lg";
         </li>
 <!-- ____________________________________________________________________________________ -->
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="javascript:void(0);" id="geranciarAlunos" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-edit myicon"></i>Gerenciar Alunos</a>
+          <a class="nav-link dropdown-toggle" href="javascript:void(0);" id="geranciarAlunos" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-edit myicon"></i>2) Gerenciar Alunos</a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <li><a class="dropdown-item" href="javascript:void(0);" id="btAdicionarAluno">Cadastrar Novo</a></li>
           <li><a class="dropdown-item" href="javascript:void(0);" id="btListarAlunos">Listar/Excluir</a></li>
           </ul>
         </li>
 <!-- ____________________________________________________________________________________ -->
+<li class="nav-item">
+          <a class="nav-link" href="javascript:void(0);" id="btAvaliarAlunos"><i class="fas fa-user-graduate myicon"></i>3) Avaliar Alunos</a>
+        </li>
+<!-- ____________________________________________________________________________________ -->
         <li class="nav-item">
-          <a class="nav-link" href="javascript:void(0);" id="relatorios"><i class="fas fa-receipt myicon"></i>Relatórios</a>
+          <a class="nav-link" href="javascript:void(0);" id="btRelatorioAccess"><i class="fas fa-receipt myicon"></i>4) Relatórios</a>
         </li>
 <!-- ____________________________________________________________________________________ -->
       </ul>
@@ -366,19 +390,26 @@ $myexpand = "navbar-expand-lg";
     </div>
   </nav>
 <!-- ################################################ -->
-<div id="painel">
   <div class="row align-items-center w-100">
-    <div class="col-sm"></div>
-    <div class="col-sm">
-      <video width="550" height="550" autoplay="autoplay" loop="loop" muted="muted" defaultMuted playsinline oncontextmenu="return false;" preload="auto">
+    <div class="col-sm">&nbsp;</div>
+    <div class="col-sm d-flex justify-content-center"><img class="logosecretaria" src="./imagens/logo_secretaria_municipal_batatais.svg"/></div>
+    <div class="col-sm">&nbsp;</div>
+  </div>
+
+  <div class="row align-items-center w-100">
+    <div class="col-sm">&nbsp;</div>
+    <div class="col-sm d-flex justify-content-center">
+
+      <video class="vdmain" width="550" height="550" autoplay="autoplay" loop="loop" muted="muted" defaultMuted playsinline oncontextmenu="return false;" preload="auto">
         <source src="./videos/focus.mp4" type="video/mp4" />
         <source src="./videos/focus.ogg" type="video/ogg" />
         Seu navegador não suporta tag de vídeo (HTML5).
       </video>
+
     </div>
     <div class="col-sm">&nbsp;</div>
   </div>
-</div>
+
 <script  src="./script.js"></script>
 <div id="trash" style="display:none;"></div>
 </body>
